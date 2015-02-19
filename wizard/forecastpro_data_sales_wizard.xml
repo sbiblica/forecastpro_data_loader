@@ -1,0 +1,40 @@
+<?xml version="1.0" ?>
+<openerp>
+    <data>
+        <record id="forecastpro_data_sales_wizard" model="ir.ui.view">
+            <field name="name">Load sales data spreadsheet file</field>
+            <field name="model">forecastpro.data.sales.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Select file">
+                    <group>
+                        <field name="file" required="1"/>
+                    </group>
+                    <footer>
+                        <button name="load_file" string="Load file" type="object" class="oe_highlight"/>
+                        or
+                        <button string="Cancel" class="oe_link" special="cancel" />
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="forecastpro_data_sales_action" model="ir.actions.act_window">
+            <field name="name">Load sales data spreadsheet file</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">forecastpro.data.sales.wizard</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+        <menuitem
+            name="Load sales data spreadsheet file"
+            action="forecastpro_data_sales_action"
+            id="forecastpro_data_sales_wizard_menu"
+            parent="forecastpro_data_loader_menu"
+            sequence="10"
+        />
+
+
+    </data>
+</openerp>

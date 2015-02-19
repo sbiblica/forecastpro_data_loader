@@ -1,0 +1,50 @@
+<?xml version="1.0" ?>
+<openerp>
+    <data>
+        <record id="forecastpro_generate_data_file_wizard" model="ir.ui.view">
+            <field name="name">Generate data file</field>
+            <field name="model">forecastpro.generate.data.file.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Generate file">
+                    <field invisible="1" name="state"/>
+                    <field name="name" invisible="1"/>
+                    <group states="choose" string="Select year to generate data">
+                        <field name="branch" required="1"/>
+                        <field name="year" required="1"/>
+                    </group>
+                    <div states="get">
+                        <h2>File generation complete</h2>
+                        <p>Here is the generated file: <field name="data" readonly="1" filename="name"/></p>
+                    </div>
+                    <footer states="choose">
+                        <button name="generate_file" string="Generate file" type="object" class="oe_highlight"/>
+                        or
+                        <button string="Cancel" class="oe_link" special="cancel" />
+                    </footer>
+                    <footer states="get">
+                        <button special="cancel" string="Close" type="object"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="forecastpro_generate_data_file_action" model="ir.actions.act_window">
+            <field name="name">Generate data file</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">forecastpro.generate.data.file.wizard</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+        <menuitem
+            name="Generate data file"
+            action="forecastpro_generate_data_file_action"
+            id="forecastpro_generate_data_file_menu"
+            parent="forecastpro_data_loader_menu"
+            sequence="50"
+        />
+
+
+    </data>
+</openerp>

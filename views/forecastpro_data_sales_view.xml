@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="forecastpro_data_sales_view_graph" model="ir.ui.view">
+             <field name="name">Forecast sales data</field>
+             <field name="model">forecastpro.data.sales</field>
+             <field name="arch" type="xml">
+                 <graph string="Forecast sales data" type="pivot" stacked="True">
+                     <field name="branch" type="row"/>
+                     <field name="product_id" type="row"/>
+                     <field name="year" type="col"/>
+                     <field name="month" type="col"/>
+                     <field name="units" type="measure"/>
+                 </graph>
+             </field>
+        </record>
+
+        <record id="forecastpro_data_sales_view_search" model="ir.ui.view">
+            <field name="name">Forecast sales data</field>
+            <field name="model">forecastpro.data.sales</field>
+            <field name="arch" type="xml">
+                <search string="Forecast data">
+                    <field name="branch"/>
+                    <field name="product_id"/>
+                    <field name="year"/>
+                    <field name="month"/>
+                </search>
+            </field>
+        </record>
+
+        <record id="forecastpro_data_sales_view_action" model="ir.actions.act_window">
+            <field name="name">Forecast sales data</field>
+            <field name="res_model">forecastpro.data.sales</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">graph</field>
+            <field name="search_view_id" ref="forecastpro_data_sales_view_search"/>
+            <field name="view_id" ref="forecastpro_data_sales_view_graph"/>
+            <field name="context">{'group_by_no_leaf':1,'group_by':[]}</field>
+            <field name="help">Summary of forecast sales data loaded by branch.</field>
+        </record>
+
+        <menuitem action="forecastpro_data_sales_view_action" id="forecastpro_data_sales_view_menu" parent="forecastpro_data_loader_menu" sequence="20"/>
+
+    </data>
+</openerp>

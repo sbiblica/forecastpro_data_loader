@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="forecast_data_view_graph" model="ir.ui.view">
+             <field name="name">Forecast data</field>
+             <field name="model">forecastpro.data</field>
+             <field name="arch" type="xml">
+                 <graph string="Forecast data" type="pivot" stacked="True">
+                     <field name="branch" type="row"/>
+                     <field name="description" type="row"/>
+                     <field name="year" type="col"/>
+                     <field name="month" type="col"/>
+                     <field name="units" type="measure"/>
+                 </graph>
+             </field>
+        </record>
+
+        <record id="forecast_data_view_search" model="ir.ui.view">
+            <field name="name">Forecast data</field>
+            <field name="model">forecastpro.data</field>
+            <field name="arch" type="xml">
+                <search string="Forecast data">
+                    <field name="branch"/>
+                    <field name="isbn"/>
+                    <field name="description"/>
+                    <field name="year"/>
+                    <field name="month"/>
+                </search>
+            </field>
+        </record>
+
+        <record id="forecast_data_view_action" model="ir.actions.act_window">
+            <field name="name">Forecast data</field>
+            <field name="res_model">forecastpro.data</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">graph</field>
+            <field name="search_view_id" ref="forecast_data_view_search"/>
+            <field name="view_id" ref="forecast_data_view_graph"/>
+            <field name="context">{'group_by_no_leaf':1,'group_by':[]}</field>
+            <field name="help">Summary of forecast data loaded by branch.</field>
+        </record>
+
+        <menuitem action="forecast_data_view_action" id="forecast_data_view_menu" parent="menu_forecast_pro" sequence="20"/>
+
+    </data>
+</openerp>

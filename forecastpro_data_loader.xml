@@ -1,0 +1,10 @@
+<?xml version="1.0" ?>
+<openerp>
+    <data>
+        <menuitem id="forecastpro_data_loader_menu"
+            sequence="100"
+            parent="purchase.menu_procurement_management_product"
+            name="Forecast pro"
+        />
+    </data>
+</openerp>
